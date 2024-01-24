@@ -7,21 +7,26 @@ const Search = ({ onSearchChange }) => {
   const [search, setSearch] = useState(null);
 
   const loadOptions = (inputValue) => fetch(
-    `${GeoApiUrl}/cities?countryIds=174469&namePrefix=${inputValue}`,
+    `${GeoApiUrl}/cities?minPopulation=1000000&namePrefix=${inputValue}`,
     geoApiOptions,
   )
-    .then((response) => response.json())
     .then((response) => {
-      return {
-        options: response.data.map((city) => {
-          return {
-            value: `${city.latitude} ${city.longitude}`,
-            label: `${city.name}`, ${city.countryCode},
-          };
-        }),
-      };
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      response.json();
     })
-    .catch((err) => console.error(err));
+    .then((response) => ({
+      options: response.data.map((city) => ({
+        value: `${city.latitude} ${city.longitude}`,
+        label: `${city.name}, ${city.countryCode}`,
+      })),
+    }))
+    .catch((err) => console.log(err));
+    // {
+    //   console.error('Error fetching data:', err);
+    //   return { options: [] }; // Return empty options array in case of an error
+    // });
 
   const handleOnChange = (searchData) => {
     setSearch(searchData);
@@ -40,7 +45,7 @@ const Search = ({ onSearchChange }) => {
 };
 
 Search.propTypes = {
-  onSearchChange: PropTypes.string.isRequired,
+  onSearchChange: PropTypes.func.isRequired,
 };
 
 export default Search;
