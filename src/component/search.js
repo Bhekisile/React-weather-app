@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { useState } from 'react';
 import { AsyncPaginate } from 'react-select-async-paginate';
 import PropTypes from 'prop-types';
@@ -7,33 +6,30 @@ import { GeoApiUrl, geoApiOptions } from '../api';
 const Search = ({ onSearchChange }) => {
   const [search, setSearch] = useState(null);
 
-  const loadOptions = (inputValue) => {
-    return fetch(
-    `${GeoApiUrl}/cities?minPopulation=1000000&namePrefix=${inputValue}`,
-    geoApiOptions,
-  )
-    .then((response) => {
+  const loadOptions = async (inputValue) => {
+    try {
+      const response = await fetch(
+        `${GeoApiUrl}/cities?minPopulation=1000000&namePrefix=${inputValue}`,
+        geoApiOptions,
+      );
+
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
-      response.json();
-    })
-    .then((response) => {
+
+      const responseData = await response.json();
+
       return {
-        options: response.data.map((city) => {
-          return {
-            value: `${city.latitude} ${city.longitude}`,
-            label: `${city.name}, ${city.countryCode}`,
-          };
-        }),
+        options: responseData.data.map((city) => ({
+          value: `${city.latitude} ${city.longitude}`,
+          label: `${city.name}, ${city.countryCode}`,
+        })),
       };
-    })
-    // .catch((err) => console.log(err));
-    .catch((err) => {
+    } catch (err) {
       console.error('Error fetching data:', err);
-      return { options: [] }; // Return empty options array in case of an error
-    });
-  }
+      return { options: [] };
+    }
+  };
 
   const handleOnChange = (searchData) => {
     setSearch(searchData);
