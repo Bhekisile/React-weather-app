@@ -3,8 +3,10 @@ import {
   AccordionItem,
   AccordionItemButton,
   AccordionItemHeading,
+  AccordionItemPanel,
 } from 'react-accessible-accordion';
 import PropTypes from 'prop-types';
+import './Forecast.css';
 
 const weekDays = [
   'Monday',
@@ -51,6 +53,76 @@ function Forecast({ data }) {
                 </div>
               </AccordionItemButton>
             </AccordionItemHeading>
+            <AccordionItemPanel>
+              <div className="daily-details-grid">
+                <div className="daily-details-grid-item">
+                  <label htmlFor="pressure">
+                    Pressure
+                    <input type="text" id="pressure" />
+                  </label>
+                  <label htmlFor="label-pressure">
+                    <input type="text" id="label-pressure" />
+                    {item.main.pressure}
+                    hPa
+                  </label>
+                </div>
+                <div className="daily-details-grid-item">
+                  <label htmlFor="humidity">
+                    Humidity
+                    <input type="text" id="humidity" />
+                  </label>
+                  <label htmlFor="label-humidity">
+                    <input type="text" id="label-humidity" />
+                    {item.main.humidity}
+                    %
+                  </label>
+                </div>
+                <div className="daily-details-grid-item">
+                  <label htmlFor="clouds">
+                    Clouds
+                    <input type="text" id="clouds" />
+                  </label>
+                  <label htmlFor="label-clouds">
+                    <input type="text" id="label-clouds" />
+                    {item.clouds.all}
+                    %
+                  </label>
+                </div>
+                <div className="daily-details-grid-item">
+                  <label htmlFor="wind-speed">
+                    Wind speed
+                    <input type="text" id="wind-speed" />
+                  </label>
+                  <label htmlFor="wind-speed">
+                    <input type="text" id="wind-speed" />
+                    {item.wind.speed}
+                    m/s
+                  </label>
+                </div>
+                <div className="daily-details-grid-item">
+                  <label htmlFor="sea-level">
+                    Sea level
+                    <input type="text" id="sea-level" />
+                  </label>
+                  <label htmlFor="sea-level">
+                    <input type="text" id="sea-level" />
+                    {item.main.sea_level}
+                    m
+                  </label>
+                </div>
+                <div className="daily-details-grid-item">
+                  <label htmlFor="feels-like">
+                    Feels like
+                    <input type="text" id="feels-like" />
+                  </label>
+                  <label htmlFor="feels-like">
+                    <input type="text" id="feels-like" />
+                    {Math.round(item.main.feels_like)}
+                    °C
+                  </label>
+                </div>
+              </div>
+            </AccordionItemPanel>
           </AccordionItem>
         ))}
       </Accordion>
