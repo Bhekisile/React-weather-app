@@ -59,8 +59,12 @@ function CurrentWeather({ data }) {
 CurrentWeather.propTypes = {
   data: PropTypes.shape({
     city: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    weather: PropTypes.string.isRequired,
+    // description: PropTypes.string.isRequired,
+    // weather: PropTypes.string.isRequired,
+    weather: PropTypes.arrayOf(PropTypes.shape({
+      description: PropTypes.string.isRequired,
+      icon: PropTypes.string.isRequired,
+    })),
     main: PropTypes.arrayOf(PropTypes.shape({
       temp: PropTypes.number.isRequired,
       feels_like: PropTypes.number.isRequired,

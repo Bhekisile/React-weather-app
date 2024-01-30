@@ -28,10 +28,11 @@ function Forecast({ data }) {
     <>
       <label htmlFor="title" className="title">
         Daily
-        <input type="text" id="title" />
+        <input className="hidden" type="text" id="title" />
       </label>
       <Accordion allowZeroExpanded>
         {data.list.splice(0, 7).map((item, idx) => (
+          // console.log('item', item);
           <AccordionItem key={item.dt}>
             <AccordionItemHeading>
               <AccordionItemButton>
@@ -58,10 +59,10 @@ function Forecast({ data }) {
                 <div className="daily-details-grid-item">
                   <label htmlFor="pressure">
                     Pressure
-                    <input type="text" id="pressure" />
+                    <input className="hidden" type="text" id="pressure" />
                   </label>
                   <label htmlFor="label-pressure">
-                    <input type="text" id="label-pressure" />
+                    <input className="hidden" type="text" id="label-pressure" />
                     {item.main.pressure}
                     hPa
                   </label>
@@ -69,10 +70,10 @@ function Forecast({ data }) {
                 <div className="daily-details-grid-item">
                   <label htmlFor="humidity">
                     Humidity
-                    <input type="text" id="humidity" />
+                    <input className="hidden" type="text" id="humidity" />
                   </label>
                   <label htmlFor="label-humidity">
-                    <input type="text" id="label-humidity" />
+                    <input className="hidden" type="text" id="label-humidity" />
                     {item.main.humidity}
                     %
                   </label>
@@ -80,10 +81,10 @@ function Forecast({ data }) {
                 <div className="daily-details-grid-item">
                   <label htmlFor="clouds">
                     Clouds
-                    <input type="text" id="clouds" />
+                    <input className="hidden" type="text" id="clouds" />
                   </label>
                   <label htmlFor="label-clouds">
-                    <input type="text" id="label-clouds" />
+                    <input className="hidden" type="text" id="label-clouds" />
                     {item.clouds.all}
                     %
                   </label>
@@ -91,10 +92,10 @@ function Forecast({ data }) {
                 <div className="daily-details-grid-item">
                   <label htmlFor="wind-speed">
                     Wind speed
-                    <input type="text" id="wind-speed" />
+                    <input className="hidden" type="text" id="wind-speed" />
                   </label>
                   <label htmlFor="wind-speed">
-                    <input type="text" id="wind-speed" />
+                    <input className="hidden" type="text" id="wind-speed" />
                     {item.wind.speed}
                     m/s
                   </label>
@@ -102,10 +103,10 @@ function Forecast({ data }) {
                 <div className="daily-details-grid-item">
                   <label htmlFor="sea-level">
                     Sea level
-                    <input type="text" id="sea-level" />
+                    <input className="hidden" type="text" id="sea-level" />
                   </label>
                   <label htmlFor="sea-level">
-                    <input type="text" id="sea-level" />
+                    <input className="hidden" type="text" id="sea-level" />
                     {item.main.sea_level}
                     m
                   </label>
@@ -113,10 +114,10 @@ function Forecast({ data }) {
                 <div className="daily-details-grid-item">
                   <label htmlFor="feels-like">
                     Feels like
-                    <input type="text" id="feels-like" />
+                    <input className="hidden" type="text" id="feels-like" />
                   </label>
                   <label htmlFor="feels-like">
-                    <input type="text" id="feels-like" />
+                    <input className="hidden" type="text" id="feels-like" />
                     {Math.round(item.main.feels_like)}
                     °C
                   </label>
