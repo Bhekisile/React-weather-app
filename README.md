@@ -58,7 +58,7 @@
 
 > Add a link to your deployed project.
 
-- [Live Demo Link](https://google.com)
+- [Live Demo Link](https://react-weather-app-henna-omega.vercel.app/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -153,7 +153,7 @@ If you like this project please give it a ⭐️
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-I would like to thank Microverse for giving me all the necessary knowledge I need to make this project.
+I would like to thank Microverse and Freecodecamp for giving me all the necessary knowledge I need to make this project.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
